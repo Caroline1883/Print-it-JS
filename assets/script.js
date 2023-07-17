@@ -17,6 +17,8 @@ const slides = [
 	}
 ]
 
+// Ajout et contrôle AddEventListener
+
 var arrow_left = document.querySelector('.arrow_left');
 
 function showMsgL() {
@@ -32,3 +34,19 @@ function showMsgR() {
   }
 
 arrow_right.addEventListener('click', showMsgR);
+
+
+// Ajout bullets
+
+function genererBullets() {
+	var bulletElement = document.createElement("div");
+	bulletElement.classList.add('dot');
+	var divContent = document.createTextNode(' ');
+	bulletElement.appendChild(divContent);
+	var banner = document.getElementById('dots');
+  	dots.appendChild(bulletElement);
+}
+
+genererBullets();
+
+// Ajout bullets (en comptant le nombre d'image)
