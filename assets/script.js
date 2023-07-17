@@ -18,35 +18,25 @@ const slides = [
 ]
 
 // Ajout et contrôle AddEventListener
+// Fonction anonymisée car non reprise dans la suite du code
 
-var arrow_left = document.querySelector('.arrow_left');
-
-function showMsgL() {
-	console.log("banane");
-  }
-
-arrow_left.addEventListener('click', showMsgL);
-
-var arrow_right = document.querySelector('.arrow_right');
-
-function showMsgR() {
-	console.log("fraise");
-  }
-
-arrow_right.addEventListener('click', showMsgR);
+const arrow_left = document.querySelector('.arrow_left');
+arrow_left.addEventListener('click', function (){console.log("banane")});
+const arrow_right = document.querySelector('.arrow_right');
+arrow_right.addEventListener('click', function (){console.log("fraise")});
 
 
 // Ajout bullets
 
 function genererBullets() {
-	var bulletElement = document.createElement("div");
+	const bulletElement = document.createElement("div");
 	bulletElement.classList.add('dot');
-	var divContent = document.createTextNode(' ');
-	bulletElement.appendChild(divContent);
-	var banner = document.getElementById('dots');
+	const dots = document.querySelector('.dots');
   	dots.appendChild(bulletElement);
 }
 
 genererBullets();
 
 // Ajout bullets (en comptant le nombre d'image)
+
+console.log(slides.length);
