@@ -35,8 +35,22 @@ function genererBullets() {
   	dots.appendChild(bulletElement);
 }
 
-genererBullets();
+function genererBulletsActive() {
+	const bulletElement = document.createElement("div");
+	bulletElement.classList.add('dot');
+	bulletElement.classList.add('dot_selected');
+	const dots = document.querySelector('.dots');
+  	dots.appendChild(bulletElement);
+}
 
-// Ajout bullets (en comptant le nombre d'image)
+// Autant de bullets que d'image + bullet 1 sélectionnée
 
 console.log(slides.length);
+
+for (let i=0; i < slides.length; i++){
+	if (i===0) {
+	genererBulletsActive();
+	} else {
+	genererBullets();
+		}
+	}
