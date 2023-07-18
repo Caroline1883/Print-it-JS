@@ -17,13 +17,13 @@ const slides = [
 	}
 ]
 
+
+
 // Ajout et contrôle AddEventListener
 // Fonction anonymisée car non reprise dans la suite du code
 
 const arrow_left = document.querySelector('.arrow_left');
-arrow_left.addEventListener('click', function (){console.log("banane")});
 const arrow_right = document.querySelector('.arrow_right');
-arrow_right.addEventListener('click', function (){console.log("fraise")});
 
 
 // Ajout bullets
@@ -45,8 +45,6 @@ function genererBulletsActive() {
 
 // Autant de bullets que d'image + bullet 1 sélectionnée
 
-console.log(slides.length);
-
 for (let i=0; i < slides.length; i++){
 	if (i===0) {
 	genererBulletsActive();
@@ -54,3 +52,41 @@ for (let i=0; i < slides.length; i++){
 	genererBullets();
 		}
 	}
+
+// Action clic flèche
+
+let numero=0;
+
+function changeSlideR() {
+	numero++;
+	document.querySelector(".dots").innerHTML = "";
+		for (let i=0; i < slides.length; i++){
+			if (i===numero) {
+			genererBulletsActive();
+			} else {
+			genererBullets();
+				}
+			}
+	const img = document.querySelector(".banner-img");
+	img.setAttribute("src","./assets/images/slideshow/"+slides[numero].image);
+	document.querySelector("p").innerHTML = slides[numero].tagLine;
+}
+
+function changeSlideL() {
+	numero--;
+	document.querySelector(".dots").innerHTML = "";
+		for (let i=0; i < slides.length; i++){
+			if (i===numero) {
+			genererBulletsActive();
+			} else {
+			genererBullets();
+				}
+			}
+	const img = document.querySelector(".banner-img");
+	img.setAttribute("src","./assets/images/slideshow/"+slides[numero].image);
+	document.querySelector("p").innerHTML = slides[numero].tagLine;
+}
+
+arrow_right.addEventListener('click', function (){changeSlideR()});
+arrow_left.addEventListener('click', function (){changeSlideL()});
+
