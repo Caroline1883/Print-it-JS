@@ -17,8 +17,6 @@ const slides = [
 	}
 ]
 
-
-
 // Ajout et contrôle AddEventListener
 // Fonction anonymisée car non reprise dans la suite du code
 
@@ -48,12 +46,7 @@ let numero = 0;
 let max = slides.length;
 const img = document.querySelector(".banner-img");
 
-
-function changeSlideR() {
-	numero = ++numero % max;
-	console.log(numero);
-	if(numero>max){numero=0};
-	console.log(numero);
+function changeSlide(numero){
 	img.setAttribute("src","./assets/images/slideshow/"+slides[numero].image);
 	document.querySelector("p").innerHTML = slides[numero].tagLine;
 	document.querySelector(".dots").innerHTML = "";
@@ -62,17 +55,14 @@ function changeSlideR() {
 	}
 }
 
+function changeSlideR() {
+	numero = ++numero % max;
+	changeSlide(numero);
+}
+
 function changeSlideL() {
 	numero = (--numero + max) % max;
-	console.log(numero);
-	if(numero<0){numero=3};
-	console.log(numero);
-	img.setAttribute("src","./assets/images/slideshow/"+slides[numero].image);
-	document.querySelector("p").innerHTML = slides[numero].tagLine;
-	document.querySelector(".dots").innerHTML = "";
-	for (let i=0; i < slides.length; i++){
-		genererBullets(i, numero);
-	}
+	changeSlide(numero);
 }
 
 arrow_right.addEventListener('click', function (){changeSlideR()});
