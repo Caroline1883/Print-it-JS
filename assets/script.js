@@ -45,12 +45,12 @@ for (let i=0;i<slides.length; i++){
 // Action clic flèche
 
 let numero = 0;
-let max = slides.length - 1;
+let max = slides.length;
 const img = document.querySelector(".banner-img");
 
 
 function changeSlideR() {
-	numero++;
+	numero = ++numero % max;
 	console.log(numero);
 	if(numero>max){numero=0};
 	console.log(numero);
@@ -63,7 +63,7 @@ function changeSlideR() {
 }
 
 function changeSlideL() {
-	numero--;
+	numero = (--numero + max) % max;
 	console.log(numero);
 	if(numero<0){numero=3};
 	console.log(numero);
