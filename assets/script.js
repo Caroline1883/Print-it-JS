@@ -28,30 +28,19 @@ const arrow_right = document.querySelector('.arrow_right');
 
 // Ajout bullets
 
-function genererBullets() {
+function genererBullets(i, numero=0) {
 	const bulletElement = document.createElement("div");
 	bulletElement.classList.add('dot');
-	const dots = document.querySelector('.dots');
-  	dots.appendChild(bulletElement);
-}
-
-function genererBulletsActive() {
-	const bulletElement = document.createElement("div");
-	bulletElement.classList.add('dot');
-	bulletElement.classList.add('dot_selected');
-	const dots = document.querySelector('.dots');
-  	dots.appendChild(bulletElement);
-}
-
-// Autant de bullets que d'image + bullet 1 sélectionnée
-
-for (let i=0; i < slides.length; i++){
-	if (i===0) {
-	genererBulletsActive();
-	} else {
-	genererBullets();
-		}
+	if (i===numero){
+		bulletElement.classList.add('dot_selected');
 	}
+	const dots = document.querySelector('.dots');
+	dots.appendChild(bulletElement);
+}
+
+for (let i=0;i<slides.length; i++){
+	genererBullets(i);
+}
 
 // Action clic flèche
 
@@ -68,13 +57,9 @@ function changeSlideR() {
 	img.setAttribute("src","./assets/images/slideshow/"+slides[numero].image);
 	document.querySelector("p").innerHTML = slides[numero].tagLine;
 	document.querySelector(".dots").innerHTML = "";
-		for (let i=0; i < slides.length; i++){
-			if (i===numero) {
-			genererBulletsActive();
-			} else {
-			genererBullets();
-				}
-			}
+	for (let i=0; i < slides.length; i++){
+		genererBullets(i, numero);
+	}
 }
 
 function changeSlideL() {
@@ -86,13 +71,9 @@ function changeSlideL() {
 	img.setAttribute("src","./assets/images/slideshow/"+slides[numero].image);
 	document.querySelector("p").innerHTML = slides[numero].tagLine;
 	document.querySelector(".dots").innerHTML = "";
-		for (let i=0; i < slides.length; i++){
-			if (i===numero) {
-			genererBulletsActive();
-			} else {
-			genererBullets();
-				}
-			}
+	for (let i=0; i < slides.length; i++){
+		genererBullets(i, numero);
+	}
 }
 
 arrow_right.addEventListener('click', function (){changeSlideR()});
